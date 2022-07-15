@@ -1,7 +1,3 @@
-provider "aws" {
-  region  = var.aws_region
-  profile = "default"
-}
 resource "aws_instance" "my-ec2-vm" {
   ami                    = var.ec2_ami_id
   instance_type          = var.itype
@@ -70,58 +66,6 @@ resource "aws_security_group" "vpc-web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-# variables
-variable "aws_region" {
-  description = "Region in which AWS resources to be created"
-  type        = string
-  default     = "eu-central-1"
-}
- 
-variable "ec2_ami_id" {
-  description = "AMI ID"
-  type        = string
-  default     = "ami-065deacbcaac64cf2" # Amazon2 Linux AMI ID
-}
- 
-variable "ec2_instance_count" {
-  description = "EC2 Instance Count"
-  type        = number
-  default     = 1
-}
-variable "itype" {
-  description = "instance type"
-  type        = string
-  default     = "t2.medium"
-}
- variable "sg1" {
-  description = "instance type"
-  type        = string
-  default     = "sg1"
-}
-variable "sg2" {
-  description = "instance type"
-  type        = string
-  default     = "sg2"
-}
-#output
-
-output "public_ip" {
-  value = aws_instance.my-ec2-vm.*.public_ip
-}
- 
-output "ec2_ID" {
-  value = aws_instance.my-ec2-vm.*.id
-}
- 
-output "ec2-arn" {
-  value = aws_instance.my-ec2-vm.*.arn
-}
- 
-output "private-ip" {
-  value = aws_instance.my-ec2-vm.*.private_ip
-}
- 
 
 
- 
  
