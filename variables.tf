@@ -18,7 +18,7 @@ variable "ec2_instance_count" {
 variable "itype" {
   description = "instance type"
   type        = string
-  default     = "t2.medium"
+  default     = "t2.micro"
 }
  variable "sg1" {
   description = "instance type"
